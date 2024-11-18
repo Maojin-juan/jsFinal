@@ -5,36 +5,33 @@ export default {
     extend: {
       backgroundImage: {},
 
-      fontSize: {
-        "2xl": [
-          "1.5rem",
-          {
-            lineHeight: "2.25rem",
-            fontWeight: "700",
-          },
-        ],
-      },
+      fontSize: {},
 
       colors: {},
 
       fontFamily: {
-        sans: ["Lato", "Roboto Mono", "sans-serif"],
-        RobotoM: ["Roboto Mono"],
+        sans: ["Noto Sans TC", "sans-serif"],
       },
 
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "14px",
-          md: "2.25rem",
-        },
-      },
       screens: {
         sm: "576px",
         md: "768px",
         lg: "992px",
         xl: "1200px",
         "2xl": "1400px",
+        "3xl": "1600px",
+      },
+
+      container: {
+        center: true,
+        padding: "24px",
+        screens: {
+          sm: "564px",
+          md: "744px",
+          lg: "984px",
+          xl: "1164px",
+          "2xl": "1344px",
+        },
       },
     },
   },

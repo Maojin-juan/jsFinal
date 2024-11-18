@@ -22,7 +22,7 @@ function moveOutputPlugin() {
 }
 
 export default defineConfig({
-  base: "/tailwind-template/",
+  base: "/jsFinal/",
   plugins: [
     liveReload([
       "./src/layout/**/*.ejs",

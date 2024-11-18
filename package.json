@@ -1,5 +1,5 @@
 {
-  "name": "tailwind-template",
+  "name": "jsfinal",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,7 +24,5 @@
     "vite-plugin-live-reload": "^3.0.2",
     "cssnano": "^7.0.4"
   },
-  "dependencies": {
-    
-  }
+  "dependencies": {}
 }
