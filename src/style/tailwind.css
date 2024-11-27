@@ -496,7 +496,7 @@
     object-fit: cover;
   }
 
-  .productCard a {
+  .productCard button {
     display: block;
     background-color: #000000;
     color: #ffffff;
@@ -507,11 +507,11 @@
     text-decoration: none;
   }
 
-  .productCard a:hover {
+  .productCard button:hover {
     background-color: #301e5f;
   }
 
-  .productCard a,
+  .productCard button,
   .productCard h3 {
     font-size: 1.25rem;
   }
@@ -592,14 +592,17 @@
 
   .cardItem-title img {
     margin-right: 15px;
-    max-width: 80px;
+    width: 80px;
+    height: 80px;
+    -o-object-fit: cover;
+    object-fit: cover;
   }
 
   .discardBtn {
     text-align: right;
   }
 
-  .discardBtn a {
+  .discardBtn button {
     text-decoration: none;
     display: inline-block;
     padding: 10px;
@@ -607,7 +610,7 @@
     color: #000000;
   }
 
-  .discardBtn a:hover {
+  .discardBtn button:hover {
     color: #6a33f8;
     -webkit-transform: scale(1.3);
     transform: scale(1.3);

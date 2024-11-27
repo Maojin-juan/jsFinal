@@ -1,12 +1,6 @@
-import getProducts from "../../services/productServices";
 import productsCard from "./productsCard";
 
-const initialRender = async () => {
-  const products = await getProducts();
-  renderProducts(products);
-};
-
-export const renderProducts = (products) => {
+export const renderProducts = async (products) => {
   document.querySelector(".productWrap").innerHTML = "";
   products.forEach((item) => {
     const card = productsCard(item);
@@ -15,7 +9,5 @@ export const renderProducts = (products) => {
       .insertAdjacentHTML("beforeend", card);
   });
 };
-
-initialRender();
 
 export default renderProducts;

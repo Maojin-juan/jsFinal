@@ -1,19 +1,53 @@
-import getCarts from "../../services/cartServices";
+import { getCarts } from "../../services/cartServices";
 
-const renderCart = async (cartData) => {
-  const carts = await getCarts();
-  cartList.innerHTML = cartData
+export default async function renderCart() {
+  const cartList = document.querySelector(".shoppingCart-table");
+  cartList.innerHTML = "";
+  const cartData = await getCarts();
+
+  const cartItems = cartData.carts
     .map(
       (item) => `
-    <li>
-      <p>名稱: <span>${item.product.title}</span></p>
-      <p>數量: <span>${item.quantity}</span></p>
-      <button class="btn btn-danger deleteCart" data-id="${item.id}">刪除</button>
-    </li>
+      <tr>
+        <td>
+          <div class="cardItem-title">
+            <img src="${item.product.images}" alt="" />
+            <p>${item.product.title}</p>
+          </div>
+        </td>
+        <td>${item.product.price}</td>
+        <td>${item.quantity}</td>
+        <td>${item.product.price * item.quantity}</td>
+        <td class="discardBtn">
+          <button type="button" class="deleteCart material-icons" data-id="${item.id}">clear</button>
+        </td>
+      </tr>
   `,
     )
     .join("");
-  attachDeleteCartEvent();
-};
+
+  cartList.insertAdjacentHTML(
+    "afterbegin",
+    `<tr>
+      <th width="40%">品項</th>
+      <th width="15%">單價</th>
+      <th width="15%">數量</th>
+      <th width="15%">金額</th>
+      <th width="15%"></th>
+    </tr>
+    ${cartItems}
+    <tr>
+      <td>
+        <a href="#" class="discardAllBtn">刪除所有品項</a>
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <p>總金額</p>
+      </td>
+      <td>${cartData.finalTotal}</td>
+    </tr>`,
+  );
+}
 
 renderCart();
