@@ -1,4 +1,5 @@
 import { getCarts } from "../../services/cartServices";
+import { attachDeleteBtn } from "./handleDeleteCart";
 
 export default async function renderCart() {
   const cartList = document.querySelector(".shoppingCart-table");
@@ -27,8 +28,9 @@ export default async function renderCart() {
     .join("");
 
   cartList.insertAdjacentHTML(
-    "afterbegin",
-    `<tr>
+    "beforeend",
+    `
+    <tr>
       <th width="40%">品項</th>
       <th width="15%">單價</th>
       <th width="15%">數量</th>
@@ -48,6 +50,8 @@ export default async function renderCart() {
       <td>${cartData.finalTotal}</td>
     </tr>`,
   );
+
+  attachDeleteBtn();
 }
 
 renderCart();

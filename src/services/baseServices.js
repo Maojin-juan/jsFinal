@@ -1,8 +1,7 @@
 import axios from "axios";
-import { BASE_URL, API_PATH } from "../config";
 
 const baseService = axios.create({
-  baseURL: `${BASE_URL}${API_PATH}`,
+  baseURL: `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_API_PATH}`,
 });
 
 // 可以添加請求攔截器

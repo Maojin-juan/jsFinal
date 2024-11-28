@@ -14,37 +14,53 @@ export const getCarts = async () => {
     console.error("獲取產品時出現錯誤:", error);
     throw error;
   } finally {
-    console.log("請求完成");
+    console.log("獲取購物車請求結束");
   }
 };
 
-// 添加到購物車
-export const addToCart = async (productId, quantity = 1, cartId = null) => {
+// 添加至購物車
+export const addToCart = async (id, quantity = 1, existingItem) => {
   try {
-    const data = {
-      productId,
-      quantity,
-    };
-
-    if (cartId) {
-      await baseService.patch(`/carts`, { data });
+    let data;
+    if (existingItem) {
       console.log("更新購物車數量成功");
+      data = {
+        id: id,
+        quantity: quantity,
+      };
+      const response = await baseService.patch(`/carts`, { data });
+      return response;
     } else {
-      // 否則使用 POST 添加新項目
-      await baseService.post("/carts", { data });
       console.log("加入購物車成功");
+      data = {
+        productId: id,
+        quantity: quantity,
+      };
+      const response = await baseService.post("/carts", { data });
+      return response;
     }
-
-    return data;
   } catch (error) {
     console.error("加入購物車時出現錯誤:", error);
     throw error;
   } finally {
-    console.log("請求完成");
+    console.log("添加至購物車請求結束");
   }
 };
 
 // 刪除購物車項目
-export const deleteCart = async (cartId) => {
-  await baseService.delete(`/carts/${cartId}`);
+export const deleteCartItem = async (cartId) => {
+  try {
+    const response = await baseService.delete(`/carts/${cartId}`);
+
+    if (!response.data || typeof response.data !== "object") {
+      throw new Error("獲取的購物車數據格式不正確");
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error("獲取產品時出現錯誤:", error);
+    throw error;
+  } finally {
+    console.log("刪除購物車項目請求結束");
+  }
 };

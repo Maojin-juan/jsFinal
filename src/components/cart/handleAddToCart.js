@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function handleAddToCart(productId) {
-  const quantity = 1;
-
   const cartData = await getCarts();
   const existingItem = cartData.carts.find(
     (item) => item.product.id === productId,
@@ -23,9 +21,8 @@ async function handleAddToCart(productId) {
 
   if (existingItem) {
     const updatedQuantity = existingItem.quantity + 1;
-    return await addToCart(productId, updatedQuantity, existingItem.id);
+    return await addToCart(existingItem.id, updatedQuantity, existingItem);
   } else {
-    const cartId = cartData.id;
-    return await addToCart(productId, quantity, cartId);
+    return await addToCart(productId, 1, existingItem);
   }
 }

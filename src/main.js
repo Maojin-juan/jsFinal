@@ -11,3 +11,4 @@ import "./components/filter/renderFilter";
 // 購物車
 import "./components/cart/renderCart";
 import "./components/cart/handleAddToCart";
+import "./components/cart/handleDeleteCart";
