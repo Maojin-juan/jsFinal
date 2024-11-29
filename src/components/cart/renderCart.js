@@ -3,8 +3,9 @@ import { attachDeleteBtn } from "./handleDeleteCart";
 
 export default async function renderCart() {
   const cartList = document.querySelector(".shoppingCart-table");
-  cartList.innerHTML = "";
   const cartData = await getCarts();
+
+  cartList.innerHTML = "";
 
   const cartItems = cartData.carts
     .map(
@@ -16,9 +17,9 @@ export default async function renderCart() {
             <p>${item.product.title}</p>
           </div>
         </td>
-        <td>${item.product.price}</td>
+        <td>${item.product.price} 元</td>
         <td>${item.quantity}</td>
-        <td>${item.product.price * item.quantity}</td>
+        <td>${item.product.price * item.quantity} 元</td>
         <td class="discardBtn">
           <button type="button" class="deleteCart material-icons" data-id="${item.id}">clear</button>
         </td>
@@ -47,8 +48,9 @@ export default async function renderCart() {
       <td>
         <p>總金額</p>
       </td>
-      <td>${cartData.finalTotal}</td>
-    </tr>`,
+      <td>${cartData.finalTotal} 元</td>
+    </tr>
+    `,
   );
 
   attachDeleteBtn();

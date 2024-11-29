@@ -1,5 +1,9 @@
 import "./style/tailwind.css";
+
+// 拖拽
 import "./components/draggable/dragMessage";
+
+// 菜單
 import "./components/menu/menuControl";
 
 // 初始化
@@ -12,3 +16,6 @@ import "./components/filter/renderFilter";
 import "./components/cart/renderCart";
 import "./components/cart/handleAddToCart";
 import "./components/cart/handleDeleteCart";
+
+// 驗證
+import "./components/validate/validate";

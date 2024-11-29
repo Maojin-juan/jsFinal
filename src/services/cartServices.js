@@ -58,9 +58,27 @@ export const deleteCartItem = async (cartId) => {
 
     return response.data;
   } catch (error) {
-    console.error("獲取產品時出現錯誤:", error);
+    console.error("刪除購物車項目時出現錯誤:", error);
     throw error;
   } finally {
     console.log("刪除購物車項目請求結束");
+  }
+};
+
+// 刪除所有購物車項目
+export const deleteAllCartItem = async () => {
+  try {
+    const response = await baseService.delete(`/carts`);
+
+    if (!response.data || typeof response.data !== "object") {
+      throw new Error("獲取的購物車數據格式不正確");
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error("刪除所有購物車項目時出現錯誤:", error);
+    throw error;
+  } finally {
+    console.log("刪除所有購物車項目請求結束");
   }
 };
