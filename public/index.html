@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <title>index</title>
   </head>
   <body>
@@ -15,6 +24,7 @@
           <li><a href="#recommendation">好評推薦</a></li>
           <li><a href="#transport">運送方式</a></li>
           <li><a href="#orderInfo">立即預訂</a></li>
+          <li><a class="font-extrabold" href="backEnd.html">後台</a></li>
         </ul>
       </div>
     </nav>
@@ -296,7 +306,25 @@
       <h3 class="section-title">我的購物車</h3>
       <div class="overflowWrap">
         <table class="shoppingCart-table">
-          <!-- 購物車內容將由 renderCart.js 動態生成 -->
+          <tr>
+            <th width="40%">品項</th>
+            <th width="15%">單價</th>
+            <th width="15%">數量</th>
+            <th width="15%">金額</th>
+            <th width="15%"></th>
+          </tr>
+          <!-- 購物車內容將由 renderCarts.js 動態生成 -->
+          <tr>
+            <td>
+              <a href="#" class="discardAllBtn">刪除所有品項</a>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+              <p>總金額</p>
+            </td>
+            <td>0 元</td>
+          </tr>
         </table>
       </div>
     </section>
@@ -313,7 +341,7 @@
               placeholder="請輸入姓名"
               name="姓名"
             />
-            <p class="orderInfo-message" data-message="姓名">必填</p>
+            <p class="orderInfo-message" data-msg="姓名"></p>
           </div>
         </div>
         <div class="orderInfo-formGroup">
@@ -326,7 +354,7 @@
               placeholder="請輸入電話"
               name="電話"
             />
-            <p class="orderInfo-message" data-message="電話">必填</p>
+            <p class="orderInfo-message" data-msg="電話"></p>
           </div>
         </div>
         <div class="orderInfo-formGroup">
@@ -337,9 +365,9 @@
               class="orderInfo-input"
               id="customerEmail"
               placeholder="請輸入 Email"
-              name="Email"
+              name="信箱"
             />
-            <p class="orderInfo-message" data-message="Email">必填</p>
+            <p class="orderInfo-message" data-msg="信箱"></p>
           </div>
         </div>
         <div class="orderInfo-formGroup">
@@ -352,7 +380,7 @@
               placeholder="請輸入寄送地址"
               name="寄送地址"
             />
-            <p class="orderInfo-message" data-message="寄送地址">必填</p>
+            <p class="orderInfo-message" data-msg="寄送地址"></p>
           </div>
         </div>
         <div class="orderInfo-formGroup">

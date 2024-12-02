@@ -1,4 +1,4 @@
-import baseService from "./baseServices";
+import { baseService } from "./baseServices";
 
 // 獲取產品列表
 const getProducts = async () => {

@@ -1,10 +1,15 @@
-import { getCarts } from "../../services/cartServices";
 import { attachDeleteBtn } from "./handleDeleteCart";
 
-export default async function renderCart() {
+export default async function renderCarts(cartData) {
   const cartList = document.querySelector(".shoppingCart-table");
-  const cartData = await getCarts();
 
+  if (!cartList) {
+    return;
+  }
+
+  if (!cartData) {
+    return;
+  }
   cartList.innerHTML = "";
 
   const cartItems = cartData.carts
@@ -56,4 +61,4 @@ export default async function renderCart() {
   attachDeleteBtn();
 }
 
-renderCart();
+renderCarts();

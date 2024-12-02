@@ -13,9 +13,14 @@ import "./components/render";
 import "./components/filter/renderFilter";
 
 // 購物車
-import "./components/cart/renderCart";
 import "./components/cart/handleAddToCart";
 import "./components/cart/handleDeleteCart";
 
 // 驗證
-import "./components/validate/validate";
+import "./components/validate/formValidation";
+
+// 表單送出
+import "./components/form/formSubmit";
+
+// 後台
+import "./components/chart/renderChart";

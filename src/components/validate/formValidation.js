@@ -1,6 +1,8 @@
-const inputs = document.querySelectorAll("input[type=text], input[type=tel]");
-
-console.log(inputs);
+const form = document.querySelector(".orderInfo-form");
+const inputs = document.querySelectorAll(
+  "input[type=text], input[type=email], input[type=tel]",
+);
+const messages = document.querySelectorAll("[data-msg]");
 
 const constraints = {
   姓名: {
@@ -14,17 +16,17 @@ const constraints = {
     presence: { message: "是必填欄位" },
     email: { message: "格式有誤" },
   },
-  地址: {
+  寄送地址: {
     presence: { message: "是必填欄位" },
   },
 };
 
-// function displayValidationErrors(errors) {
-//   messages.forEach((item) => {
-//     const fieldName = item.dataset.msg;
-//     item.textContent = errors[fieldName] ? errors[fieldName][0] : "";
-//   });
-// }
+function displayValidationErrors(errors) {
+  messages.forEach((item) => {
+    const fieldName = item.dataset.msg;
+    item.textContent = errors[fieldName] ? errors[fieldName][0] : "";
+  });
+}
 
 /* 監控所有 input 的變更事件 */
 inputs.forEach((item) => {
@@ -37,3 +39,5 @@ inputs.forEach((item) => {
       : "";
   });
 });
+
+export { displayValidationErrors, form, constraints };

@@ -1,5 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const ele = document.querySelector(".recommendation-wall");
+  if (!ele) return;
+
   ele.style.cursor = "grab";
   let pos = { top: 0, left: 0, x: 0, y: 0 };
 

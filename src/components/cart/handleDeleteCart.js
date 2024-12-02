@@ -1,5 +1,9 @@
-import { deleteCartItem, deleteAllCartItem } from "../../services/cartServices";
-import renderCart from "./renderCart";
+import {
+  getCarts,
+  deleteCartItem,
+  deleteAllCartItem,
+} from "../../services/cartServices";
+import renderCarts from "./renderCarts";
 
 export function attachDeleteBtn() {
   const deleteCartItemBtn = document.querySelectorAll(".deleteCart");
@@ -10,13 +14,13 @@ export function attachDeleteBtn() {
       const cartId = event.target.getAttribute("data-id");
 
       await deleteCartItem(cartId);
-      await renderCart();
+      await renderCarts(await getCarts());
     });
   });
 
   deleteAllCartItemBtn.addEventListener("click", async (event) => {
     event.preventDefault();
     await deleteAllCartItem();
-    await renderCart();
+    await renderCarts(await getCarts());
   });
 }

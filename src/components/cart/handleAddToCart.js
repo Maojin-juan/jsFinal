@@ -1,14 +1,15 @@
 import { getCarts, addToCart } from "../../services/cartServices";
-import renderCart from "./renderCart";
+import renderCarts from "./renderCarts";
 
 document.addEventListener("DOMContentLoaded", () => {
   const productWrap = document.querySelector(".productWrap");
+  if (!productWrap) return;
 
   productWrap.addEventListener("click", async (event) => {
     const productId = event.target.getAttribute("data-id");
     if (event.target.classList.contains("addToCart")) {
       await handleAddToCart(productId);
-      await renderCart();
+      await renderCarts(await getCarts());
     }
   });
 });

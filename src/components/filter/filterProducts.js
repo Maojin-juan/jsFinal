@@ -1,8 +1,9 @@
 import renderProducts from "../products/renderProducts";
 
-const selectElement = document.querySelector(".productSelect");
-
 export const filterProducts = async (products) => {
+  const selectElement = document.querySelector(".productSelect");
+  if (!selectElement) return null;
+
   selectElement.addEventListener("change", async (e) => {
     const selectedCategory = e.target.value;
     const filteredProducts =

@@ -1,7 +1,11 @@
 import axios from "axios";
 
 const baseService = axios.create({
-  baseURL: `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_API_PATH}`,
+  baseURL: `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_CUSTOMER_API_PATH}${import.meta.env.VITE_API_PATH}`,
+});
+
+const adminService = axios.create({
+  baseURL: `${import.meta.env.VITE_BASE_URL}${import.meta.env.VITE_ADMIN_API_PATH}${import.meta.env.VITE_API_PATH}`,
 });
 
 // 可以添加請求攔截器
@@ -25,4 +29,4 @@ baseService.interceptors.response.use(
   },
 );
 
-export default baseService;
+export { baseService, adminService };

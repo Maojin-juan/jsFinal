@@ -1,12 +1,14 @@
 import productsCard from "./productsCard";
 
 export const renderProducts = async (products) => {
-  document.querySelector(".productWrap").innerHTML = "";
+  const productWrap = document.querySelector(".productWrap");
+  if (!productWrap) return null;
+
+  productWrap.innerHTML = "";
+
   products.forEach((item) => {
     const card = productsCard(item);
-    document
-      .querySelector(".productWrap")
-      .insertAdjacentHTML("beforeend", card);
+    productWrap.insertAdjacentHTML("beforeend", card);
   });
 };
 

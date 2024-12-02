@@ -1,6 +1,7 @@
 export const renderFilter = async (products) => {
   const categories = [...new Set(products.map((item) => item.category))];
   const selectElement = document.querySelector(".productSelect");
+  if (!selectElement) return null;
 
   const options = categories
     .map((category) => `<option value="${category}">${category}</option>`)
