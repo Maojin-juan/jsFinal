@@ -21,7 +21,7 @@ function moveOutputPlugin() {
 }
 
 export default defineConfig({
-  base: "/jsFinal/",
+  base: "/",
   plugins: [
     liveReload(["./src/**/*.js", "./src/**/*.ejs", "./public/**/*.html"]),
     moveOutputPlugin(),
