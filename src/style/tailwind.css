@@ -750,7 +750,6 @@
   }
 
   .orderStatus a {
-    position: absolute;
     padding: 10px;
     top: 0;
     bottom: 0;
@@ -758,7 +757,6 @@
     left: 0;
     display: block;
     text-decoration: none;
-    color: #ffffff;
   }
 
   .orderStatus-unDone {

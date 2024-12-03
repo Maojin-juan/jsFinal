@@ -7,7 +7,7 @@ import { getCarts } from "../services/cartServices";
 import renderCarts from "./cart/renderCarts";
 
 import { getOrders } from "../services/orderServices";
-import { renderOrders } from "./order/renderOrders";
+import renderOrders from "./order/renderOrders";
 
 async function initialRender() {
   /* 產品渲染 */

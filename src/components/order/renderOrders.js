@@ -1,8 +1,9 @@
-import { getOrders } from "../../services/orderServices";
+import { attachDeleteBtn } from "./handelDelOrders";
+import { attachPutBtn } from "./handlePutOrders";
 
-export const renderOrders = async (orderData) => {
+export default async function renderOrders(orderData) {
   const orderList = document.querySelector(".orderPage-table");
-  console.log(orderData.orders);
+  if (!orderList) return;
 
   orderList.innerHTML = "";
 
@@ -18,14 +19,16 @@ export const renderOrders = async (orderData) => {
         <td>${item.user.address}</td>
         <td>${item.user.email}</td>
         <td>
-          <p>${item.products.map((product) => product.title).join(" ")}</p>
+          <p>
+            ${item.products.map((product) => `${product.title} | 購入: ${product.quantity}`).join("<br>")}
+          </p>
         </td>
-        <td>2021/03/08</td>
+        <td>${new Date(item.createdAt * 1000).toLocaleDateString("zh-TW")}</td>
         <td class="orderStatus">
-          <a href="#">未處理</a>
+          <a class=${item.paid ? "text-red-600" : "text-green-500"} data-id="${item.id}" href="#">${item.paid ? "未處理" : "已處理"}</a>
         </td>
         <td>
-          <input type="button" class="delSingleOrder-Btn" value="刪除" />
+          <input type="button" class="delSingleOrder-Btn" data-id="${item.id}" value="刪除" />
         </td>
       </tr>
       `,
@@ -52,6 +55,5 @@ export const renderOrders = async (orderData) => {
   );
 
   attachDeleteBtn();
-};
-
-export default renderOrders;
+  attachPutBtn();
+}

@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import { ViteEjsPlugin } from "vite-plugin-ejs";
 import liveReload from "vite-plugin-live-reload";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -25,7 +24,6 @@ export default defineConfig({
   base: "/jsFinal/",
   plugins: [
     liveReload(["./src/**/*.js", "./src/**/*.ejs", "./public/**/*.html"]),
-    ViteEjsPlugin(),
     moveOutputPlugin(),
   ],
   resolve: {
@@ -35,7 +33,7 @@ export default defineConfig({
   },
   server: {
     // 啟動 server 時預設開啟的頁面
-    open: "/jsFinal/index.html",
+    open: "/index.html",
   },
   build: {
     rollupOptions: {
