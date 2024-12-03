@@ -2,27 +2,38 @@ import { getOrders } from "../../services/orderServices";
 
 export const renderChart = async () => {
   const data = await getOrders();
-  const chart = document.querySelector("#chart");
 
+  const chart = document.querySelector("#chart");
   if (!chart) return;
 
   const productCounts = data.orders.reduce((acc, order) => {
     order.products.forEach((product) => {
       const productName = product.title;
       const productQuantity = product.quantity;
+      const productPrice = product.price;
 
-      const key = productName.includes("雙人床架") ? productName : "其他";
-      if (acc[key]) {
-        acc[key] += productQuantity;
+      const revenue = productQuantity * productPrice;
+
+      if (acc[productName]) {
+        acc[productName] += revenue;
       } else {
-        acc[key] = productQuantity;
+        acc[productName] = revenue;
       }
     });
     return acc;
   }, {});
 
-  const productArray = Object.entries(productCounts);
-  productArray.sort((a, b) => (b[0] === "其他" ? -1 : 1));
+  const productArray = Object.entries(productCounts)
+    .sort(([, revenueA], [, revenueB]) => revenueB - revenueA)
+    .slice(0, 3);
+
+  const otherRevenue = Object.entries(productCounts)
+    .slice(3)
+    .reduce((acc, [key, value]) => acc + value, 0);
+
+  if (otherRevenue > 0) {
+    productArray.push(["其他", otherRevenue]); // 將其他品項的營收加入數組
+  }
 
   if (productArray.length > 0) {
     const chart = c3.generate({
