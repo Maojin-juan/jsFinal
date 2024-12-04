@@ -21,11 +21,8 @@ function moveOutputPlugin() {
 }
 
 export default defineConfig({
-  base: "/",
-  plugins: [
-    liveReload(["./src/**/*.js", "./src/**/*.ejs", "./public/**/*.html"]),
-    moveOutputPlugin(),
-  ],
+  base: "/jsFinal/",
+  plugins: [liveReload(["./public/**/*.html"]), moveOutputPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "public"),
@@ -33,7 +30,7 @@ export default defineConfig({
   },
   server: {
     // 啟動 server 時預設開啟的頁面
-    open: "index.html",
+    open: "public/index.html",
   },
   build: {
     rollupOptions: {
