@@ -23,23 +23,26 @@ export const renderChart = async () => {
     return acc;
   }, {});
 
-  const productArray = Object.entries(productCounts)
-    .sort(([, revenueA], [, revenueB]) => revenueB - revenueA)
-    .slice(0, 3);
+  const productArray = Object.entries(productCounts).sort(
+    ([, revenueA], [, revenueB]) => revenueB - revenueA,
+  );
 
-  const otherRevenue = Object.entries(productCounts)
+  const topProducts = productArray.slice(0, 3);
+  const otherRevenue = productArray
     .slice(3)
-    .reduce((acc, [key, value]) => acc + value, 0);
+    .reduce((acc, [, value]) => acc + value, 0);
 
   if (otherRevenue > 0) {
-    productArray.push(["其他", otherRevenue]); // 將其他品項的營收加入數組
+    topProducts.push(["其他", otherRevenue]);
   }
+
+  const finalProductArray = topProducts;
 
   if (productArray.length > 0) {
     const chart = c3.generate({
       bindto: "#chart",
       data: {
-        columns: productArray,
+        columns: finalProductArray,
         type: "pie",
       },
       color: {
