@@ -7,6 +7,8 @@
 
 ### ✨ [Demo](https://maojin-juan.github.io/jsFinal/)
 
+<img src="./src/assets/images/demo.jpg" />
+
 ## Clone
 
 ```sh
