@@ -7,10 +7,10 @@
 
 ### ✨ [Demo](https://maojin-juan.github.io/jsFinal/)
 
-## Install
+## Clone
 
 ```sh
-npm install
+git clone https://github.com/Maojin-juan/jsFinal.git
 ```
 
 ## Usage
