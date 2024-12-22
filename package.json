@@ -7,7 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "dev": "vite",
-    "d": "gh-pages -d dist"
+    "d": "vite build && gh-pages -d dist"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

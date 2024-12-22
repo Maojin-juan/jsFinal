@@ -1,11 +1,11 @@
-<h1 align="center">Welcome to tailwind-template 👋</h1>
+<h1 align="center">Welcome to jsFinal 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> tailwind-template
+> jsFinal
 
-### 🏠 [Github](https://github.com/Maojin-juan/hexWeek3)
+### ✨ [Demo](https://maojin-juan.github.io/jsFinal/)
 
 ## Install
 
@@ -16,7 +16,7 @@ npm install
 ## Usage
 
 ```sh
-npm start
+npm run dev
 ```
 
 ## Author

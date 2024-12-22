@@ -11,8 +11,8 @@ function moveOutputPlugin() {
     apply: "build",
     async generateBundle(options, bundle) {
       for (const fileName in bundle) {
-        if (fileName.startsWith("public/")) {
-          const newFileName = fileName.slice("public/".length);
+        if (fileName.startsWith("src/pages/")) {
+          const newFileName = fileName.slice("src/pages/".length);
           bundle[fileName].fileName = newFileName;
         }
       }
@@ -22,24 +22,24 @@ function moveOutputPlugin() {
 
 export default defineConfig({
   base: "/jsFinal/",
-  plugins: [liveReload(["./public/**/*.html"]), moveOutputPlugin()],
+  plugins: [liveReload(["./src/pages/**/*.html"]), moveOutputPlugin()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "public"),
+      "@": path.resolve(__dirname, "src"),
     },
   },
   server: {
     // 啟動 server 時預設開啟的頁面
-    open: "public/index.html",
+    open: "src/pages/index.html",
   },
   build: {
     rollupOptions: {
       input: Object.fromEntries(
         glob
-          .sync("public/**/*.html")
+          .sync("src/pages/**/*.html")
           .map((file) => [
             path.relative(
-              "public",
+              "src",
               file.slice(0, file.length - path.extname(file).length),
             ),
             fileURLToPath(new URL(file, import.meta.url)),
